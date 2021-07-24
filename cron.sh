@@ -1,0 +1,1 @@
+if [[ $(ps -ef | grep -v grep | grep DiscordBotSLP.py) != *"DiscordBotSLP.py"* ]]; then python3 /home/USER/DiscordBotSLP/DiscordBotSLP.py; fi
