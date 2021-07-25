@@ -87,7 +87,8 @@ def claim_slp(ronin_address, access_token):
 	except ValueError as e:
 		return e
 
-	total = json_data['total']
+	print(json_data)
+	total = json_data['claimable_total']
 	wait = time.time() - json_data['last_claimed_item_at']
 	day = str(int(wait // (24 * 3600)))
 	wait = wait % (24 * 3600)
