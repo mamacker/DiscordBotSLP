@@ -90,26 +90,8 @@ def claim_slp(ronin_address, access_token):
 	if wait > 1350000:
 		response = "✅ **ABLE TO CLAIM**\n\n"
 	else:
-		response = "❌ **NOT ABLE TO CLAIM\n\n**"
+		response = "❌ **NOT ABLE TO CLAIM**\n\nNext claim is avaible in :" + str(datetime.timedelta(seconds=wait))
 	response += "You farmed **" + str(total) + "** SLP ! \nAfter we split, you'll have : "
 	response += str(int(int(total)*0.6)) + " SLP\nEquivalent to : "
 	response += str(int((total * get_price('slp', access_token)) * 0.6)) + "$ 😃"
 	return response
-
-	def claim_slp(self):
-		"""
-		Tells if you can claim SLP or not
-		:return: The time when it will be claimable
-		"""
-		url = 'https://game-api.skymavis.com/game-api/clients/' + self.ronin_address + '/items/1/claim'
-		body = {}
-		r = requests.post(url, headers=self.headers, json=body)
-		try:
-			json_data = json.loads(r.text)
-		except ValueError as e:
-			return e
-		wait = int(time.time()) - json_data['last_claimed_item_at']
-		if wait > 1350000:
-			return "You can claim " + str(json_data['total']) + " SLP !"
-		else:
-			return "You will be able to claim " + str(json_data['total']) + " SLP in " + str(datetime.timedelta(seconds=wait))
