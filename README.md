@@ -2,7 +2,7 @@
 
 ## Description
 
-A simple discord bot for Axie Infinity, to let your scholars know when SLP are claimable.
+A simple discord bot for Axie Infinity, to let your scholars know when SLP are claimable.  
 **Very** inspired by : https://github.com/ZracheSs-xyZ/QrCodeBot-xyZ
 
 ## Install
@@ -18,4 +18,5 @@ You can confirm by typing the command : `ps -ef | grep DiscordBotSLP.py`
 
 ## Usage
 
-The scholar can use the command `$wen` in a Discord channel where the bot is enabled to get informations about their futur claim.
+The scholar can use the command `$wen`  
+It must be done in a Discord channel where the bot is enabled.
