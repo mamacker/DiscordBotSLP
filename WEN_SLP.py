@@ -81,17 +81,29 @@ def claim_slp(ronin_address, access_token):
 	headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36', 'authorization': 'Bearer ' + access_token}
 	body = {}
 	r = requests.post(url, headers=headers, json=body)
+
 	try:
 		json_data = json.loads(r.text)
 	except ValueError as e:
 		return e
-	wait = time.time() - json_data['last_claimed_item_at']
+
 	total = json_data['total']
-	if wait > 1350000:
+	wait = time.time() - json_data['last_claimed_item_at']
+	day = wait // (24 * 3600)
+	wait = wait % (24 * 3600)
+	hour = wait // 3600
+	wait %= 3600
+	m = wait // 60
+	wait %= 60
+	s = wait
+
+	if wait > 1300000:
 		response = "✅ **ABLE TO CLAIM**\n\n"
 	else:
-		response = "❌ **NOT ABLE TO CLAIM**\n\nNext claim is avaible in : " + str(datetime.timedelta(seconds=wait))
-	response += "\nYou farmed **" + str(total) + "** SLP ! \nAfter we split, you'll have : "
+		response = "❌ **NOT ABLE TO CLAIM**\n\n"
+
+	response += "Next claim is avaible in : " + day + " day(s) " + hour + " hour(s) " + m + " min " + s + " sec\n"
+	response += "You farmed **" + str(total) + "** SLP ! \nAfter we split, you'll have : "
 	response += str(int(int(total)*0.6)) + " SLP\nEquivalent to : "
 	response += str(int((total * get_price('slp', access_token)) * 0.6)) + "$ 😃"
 	return response
