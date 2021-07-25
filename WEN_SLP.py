@@ -89,21 +89,21 @@ def claim_slp(ronin_address, access_token):
 
 	total = json_data['total']
 	wait = time.time() - json_data['last_claimed_item_at']
-	day = str(wait) // (24 * 3600)
+	day = str(int(wait // (24 * 3600)))
 	wait = wait % (24 * 3600)
-	hour = str(wait) // 3600
+	hour = str(int(wait // 3600))
 	wait %= 3600
-	m = str(wait) // 60
+	m = str(int(wait // 60))
 	wait %= 60
-	s = str(wait)
+	s = str(int(wait))
 
 	if wait > 1300000:
 		response = "✅ **ABLE TO CLAIM**\n\n"
 	else:
 		response = "❌ **NOT ABLE TO CLAIM**\n\n"
 
-	response += "Next claim is avaible in : " + day + " day(s) " + hour + " hour(s) " + m + " min " + s + " sec\n"
-	response += "You farmed **" + str(total) + "** SLP ! \nAfter we split, you'll have : "
-	response += str(int(int(total)*0.6)) + " SLP\nEquivalent to : "
-	response += str(int((total * get_price('slp', access_token)) * 0.6)) + "$ 😃"
+	response += "Next claim is avaible in : **" + day + " day(s) " + hour + " hour(s) " + m + " min " + s + " sec\n**"
+	response += "You farmed **" + str(total) + " SLP** ! \nAfter we split, you'll have : **"
+	response += str(int(int(total)*0.6)) + " SLP**\nEquivalent to : **"
+	response += str(int((total * get_price('slp', access_token)) * 0.6)) + "$** 😃"
 	return response
