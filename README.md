@@ -1,5 +1,7 @@
 # WEN SLP ?!?
 
+![](https://github.com/vmercadi/DiscordBotSLP/blob/main/img/slpbot.png)
+
 ## Description
 
 A simple discord bot for Axie Infinity, to let your scholars know when SLP are claimable.  
