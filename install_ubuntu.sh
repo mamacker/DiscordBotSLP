@@ -23,7 +23,6 @@ echo "Installing application requirements"
 pip3 install -r requirements.txt
 pip3 install discord
 pip3 install web3
-pip3 install python-crontab
 
 echo "Giving user permissions to the bot directory"
 sudo chown -R $name:$name $pw
@@ -34,7 +33,7 @@ sed -i 's/\/home\/USER\/DiscordBotSLP\/DiscordBotSLP.py/'$(echo $pw | sed 's/\//
 sed -i 's/\/home\/USER\/DiscordBotSLP\/DiscordBotSLP.py/'$(echo $pw | sed 's/\//\\\//g')'\/DiscordBotSLP.py/g' cron.sh
 
 # Create daemon of the bot
-touch "/lib/systemd/system/discordqrbot.service"
+touch "/lib/systemd/system/discordbotslp.service"
 printf "[Unit]
 Description=Discord SLP Bot
 After=multi-user.target
@@ -45,9 +44,9 @@ ExecStart=/usr/bin/python3 "$pw"/DiscordBotSLP.py
 StandardInput=tty-force
 [Install]
 WantedBy=multi-user.target
-" > /lib/systemd/system/discordqrbot.service
+" > /lib/systemd/system/discordbotslp.service
 
 sudo systemctl daemon-reload
-sudo systemctl enable discordqrbot.service
-sudo systemctl start discordqrbot.service
-sudo systemctl status discordqrbot.service
+sudo systemctl enable discordbotslp.service
+sudo systemctl start discordbotslp.service
+sudo systemctl status discordbotslp.service
