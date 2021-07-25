@@ -4,6 +4,7 @@
 
 ## Description
 
+**STILL IN PROGRESS**
 A simple python discord bot for Axie Infinity, to let your scholars know when SLP are claimable.  
 **Very** inspired by : https://github.com/ZracheSs-xyZ/QrCodeBot-xyZ
 
