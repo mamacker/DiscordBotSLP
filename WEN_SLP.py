@@ -89,13 +89,13 @@ def claim_slp(ronin_address, access_token):
 
 	total = json_data['total']
 	wait = time.time() - json_data['last_claimed_item_at']
-	day = wait // (24 * 3600)
+	day = str(wait) // (24 * 3600)
 	wait = wait % (24 * 3600)
-	hour = wait // 3600
+	hour = str(wait) // 3600
 	wait %= 3600
-	m = wait // 60
+	m = str(wait) // 60
 	wait %= 60
-	s = wait
+	s = str(wait)
 
 	if wait > 1300000:
 		response = "✅ **ABLE TO CLAIM**\n\n"
