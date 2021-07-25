@@ -90,8 +90,8 @@ def claim_slp(ronin_address, access_token):
 	if wait > 1350000:
 		response = "✅ **ABLE TO CLAIM**\n\n"
 	else:
-		response = "❌ **NOT ABLE TO CLAIM**\n\nNext claim is avaible in :" + str(datetime.timedelta(seconds=wait))
-	response += "You farmed **" + str(total) + "** SLP ! \nAfter we split, you'll have : "
+		response = "❌ **NOT ABLE TO CLAIM**\n\nNext claim is avaible in : " + str(datetime.timedelta(seconds=wait))
+	response += "\nYou farmed **" + str(total) + "** SLP ! \nAfter we split, you'll have : "
 	response += str(int(int(total)*0.6)) + " SLP\nEquivalent to : "
 	response += str(int((total * get_price('slp', access_token)) * 0.6)) + "$ 😃"
 	return response
